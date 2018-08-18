@@ -5,7 +5,7 @@
 - You would generally use a list when you only care about the data exisiting and the order may be important
 - Lists are mutable
 
-##Commonly used list functions:
+## Commonly used list functions:
 
 - del
 - append
@@ -18,7 +18,7 @@
 - copy
 - reverse
 
-[Lists Data Structures Reference](https://docs.python.org/3/tutorial/datastructures.html}
+[Lists Data Structures Reference](https://docs.python.org/3/tutorial/datastructures.html)
 
 
 [Googe Lists Reference](https://developers.google.com/edu/python/lists)
