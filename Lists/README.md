@@ -5,7 +5,7 @@
 - You would generally use a list when you only care about the data exisiting and the order may be important
 - Lists are mutable
 
-## Commonly used list functions:
+```Commonly used list functions:```
 
 - del
 - append
