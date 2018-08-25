@@ -20,3 +20,6 @@ def replace_octet(address, pos, replacement): # Function takes three arguments.
     return '.'.join(l)
 
 print(replace_octet('1.2.3.4', 2, '100'))
+
+#JINJA call
+#{% replace_octect(obj.addr, 2, '100') %}
