@@ -1,10 +1,19 @@
-from getch import getch
+import os
 import random
 import copy #Allows to copy enemy object
 
-#worky for python2
 try:
-	input = raw_input
+	from getch import getch # Python 2 on Windows does not have getch.
+except ImportError as e:
+	
+	if os.name == 'nt': # They're windows, use msvcrt.
+		import msvcrt
+		getch = msvcrt.getch
+	else:
+		raise e # They're Mac/Linux and do NOT have the getch package.
+
+try:
+	input = raw_input # Input handling for Python 2.
 except NameError:
 	pass
 
@@ -97,7 +106,7 @@ def fight_enemy():
 	if(enemy.health <= 0):
 		print("The "+str(enemy)+" has perished!")
 		print ("Your healht is now: ")
-		print player.health
+		print(player.health)
 
 	if(player.health <= 0):
 		print("The "+str(enemy)+" has defeated" +str(name))
