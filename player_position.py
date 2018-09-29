@@ -34,14 +34,15 @@ class Enemy:
 			damage = 0
 		self.health = self.health - damage
 
-    def alive(self): # Am I alive?
-        return "TODO"
+    #def alive(self):
+        #return "TODO"
 
 enemies = [ # A list of pre-constructed Enemy instances to use later
 	Enemy("Teeny", 10, 5),
-	Enemy("Squirrel", 3, 15),
+	Enemy("Squirrel", 3, 25),
 	Enemy("Goblin", 20, 4),
 	Enemy("Brick", 100, 1),
+	Enemy("Elite Squirrel", 75, 29),
 ]
 
 name = input('Please enter your playername: ')
@@ -70,32 +71,38 @@ def fight_enemy():
 		inp = getch()
 
 		totalDamage = 0
+		enemyDamage = 0
 
 		if inp == b'z': # light attack
 			totalDamage = player.attack - playerRandStrength #i.e. 15 - 3
-
+			enemyDamage = enemy.attack + random.randint(0, 5) - 3
+			player.health = player.health - enemyDamage
+		print("The "+str(enemy)+" has attacked you for "+str(enemyDamage) +"!")
 		if inp == b'x': # heavy attack
 
 			if player.stamina > 0:
 				totalDamage = player.attack + playerRandStrength #i.e. 15 + 3
 				player.stamina = player.stamina - 10
-
+				enemyDamage = enemy.attack + random.randint(0, 10) + 3
+				player.health = player.health - enemyDamage
+			print("The "+str(enemy)+" has attacked you for "+str(enemyDamage) +"!")
 			if player.stamina <= 0:
 				print("You are out of stamina for this attack :")
 
 		print("You hit the "+str(enemy)+" for "+str(totalDamage) +"!")
 		enemy.hurt(totalDamage)
 
-        # now have enemy attack
-
-        # player.health gets subtracted by enemy.attack plus random number
 
 
 	if(enemy.health <= 0):
 		print("The "+str(enemy)+" has perished!")
+		print ("Your healht is now: ")
+		print player.health
 
 	if(player.health <= 0):
-		print("The "+str(enemy)+" has defeated you!")
+		print("The "+str(enemy)+" has defeated" +str(name))
+		exit()
+
 
 def player_move():
 	global player # Reference top scope
